@@ -427,6 +427,8 @@ class BrowsableAPIRenderer(BaseRenderer):
         """
         if method not in view.allowed_methods:
             return  # Not a valid method
+        if not self.display_edit_forms:
+            return  # Forms are not wanted
 
         try:
             view.check_permissions(request)
